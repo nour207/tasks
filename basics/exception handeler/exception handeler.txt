@@ -1,0 +1,301 @@
+🔰 Level 1: Basic Try-Catch Practice
+
+
+🧩 Task 1: Divide Two Numbers
+Ask user for two integers. Divide them and handle ArithmeticException (e.g., divide by zero).
+	
+	Scanner scanner= new Scanner(System.in);
+        System.out.println("pls enter num1 : ");
+        int num1 = scanner.nextInt();
+        System.out.println("pls enter num2 : ");
+        int num2 = scanner.nextInt();
+
+        try {
+            int result= num1/num2;
+            System.out.println("the result is " + result);
+        }catch (ArithmeticException exception){
+           System.out.println("please enter valid numbers " + exception.getMessage());
+
+        }
+
+
+
+
+
+🧩 Task 2: Convert String to Integer
+Ask user to enter a number in a String, convert it to int, and handle NumberFormatException.
+Scanner scanner= new Scanner(System.in);
+        System.out.println(" pls enter the number");
+        String str=scanner.nextLine();
+
+        try {
+
+            int num =Integer.parseInt(str);
+            System.out.println("the number you entered is " +num);
+
+        }catch (NumberFormatException exception){
+            System.out.println("Please enter a valid number  "+ exception.getMessage());
+        }
+
+
+
+
+
+
+🧩 Task 3: Null Pointer
+Create a method that calls toUpperCase() on a string. Pass null and handle NullPointerException.
+public class convertString {
+    public static String convertToUpperCase(String text) {
+        try {
+            return text.toUpperCase();
+
+        } catch (NullPointerException e) {
+            System.out.println("cannot convert to upper case" + e.getMessage());
+        }
+
+
+        return text;
+    }
+}
+	String lowredCase="Nour";
+        System.out.println(convertString.convertToUpperCase(lowredCase));
+        System.out.println("//////////////////");
+        System.out.println(convertString.convertToUpperCase(null));
+
+{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("pls enter your name");
+        String name = null;
+        convertToUpperCase(name);
+
+
+
+    }
+    public static String convertToUpperCase(String text) {
+        try {
+            return text.toUpperCase();
+
+        } catch (NullPointerException e) {
+            System.out.println("cannot convert to upper case" + e.getMessage());
+        }
+
+
+        return text;
+    }
+
+
+
+
+
+
+🟡 Level 2: Working with Arrays and Files
+
+
+
+
+🧩 Task 4: Access Array Element
+Create an array of 5 elements. Ask user to enter an index and print the value. Handle ArrayIndexOutOfBoundsException.int[] numbers = {10, 20, 30, 40, 50};
+        
+	Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter index  "  ) ;
+        int index = sc.nextInt();
+        try{
+            System.out.println("Value at index " + index + " : " + numbers[index]);
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("Index out of bounds pls enter valid index  " + e.getMessage());
+        
+
+	}
+
+
+
+
+
+🧩 Task 5: Read File
+Try to read a file from disk and handle FileNotFoundException. (Use FileReader or Scanner)
+
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Main {
+     public static void main(String[] args) {
+         try {
+             File file =new File("arcc.txt");
+             Scanner sc = new Scanner(file);
+         }catch (FileNotFoundException exception){
+             System.out.println("file not found  " + exception.getMessage());
+         }
+     }
+ }
+
+
+
+
+
+
+
+
+🧩 Task 6: Multiple Catch Blocks
+Write a program that may throw both NullPointerException and ArithmeticException. Use multiple catch blocks.
+
+ 	Scanner scanner= new Scanner(System.in);
+        System.out.println("pls enter num1 : ");
+        int num1 = scanner.nextInt();
+        System.out.println("pls enter num2 : ");
+        int num2 = scanner.nextInt();
+        String name= null;
+
+        try {
+            int result= num1/num2;
+            System.out.println("the result is " + result);
+            System.out.println(name.toUpperCase());
+        }catch (ArithmeticException exception){
+            System.out.println("please enter valid numbers " + exception.getMessage());
+        }catch (NullPointerException exception){
+            System.out.println("Error: name is null! " +  exception.getMessage());
+        }
+
+
+
+
+🟠 Level 3: Custom Exceptions
+🧩 Task 7: Create a Custom Exception
+Create a custom exception InvalidAgeException. If user age < 18, throw the exception.
+---> public InvalidAgeException(String message){
+        super("you are old ");
+    }
+	
+--> Main code	Scanner sc = new Scanner(System.in);
+        	System.out.println("pls enter youa age");
+        	int age =sc.nextInt();
+        	try{
+            		if  ( age < 18);
+            			throw new InvalidAgeException("Age must be at least 18. You entered: " + age);
+
+        		}catch(InvalidAgeException e){
+        	    		System.out.println( "caught exception " + e.getMessage());
+
+       		 }
+ 
+
+{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("pls enter your age");
+        int age =sc.nextInt();
+        CheckAge(age);
+
+    }
+    static void CheckAge( int age){
+        if(age<18){
+            throw new InvalidAgeException("you are too old");
+        }
+    }
+
+
+
+
+
+🧩 sTask 9: Propagate Exception
+Create a method that throws an exception and another method that calls it. Demonstrate how exceptions propagate.
+	
+	public class ExceptionTest {
+    public static void method1() throws Exception {
+        throw new Exception("Error in Method1");
+    }
+    public static void method2() throws Exception {
+        method1();
+    }
+    public static void method3() {
+        try {
+            method2();
+        }catch (Exception e) {
+            System.out.println("Caught excptionnn in : " + e.getMessage());
+        }
+    }
+}
+
+public class Main {
+     public static void main(String[] args) {
+         ExceptionTest.method3();
+     }
+ }	
+
+
+
+
+🧩 Task 10: Throws Keyword
+Create a method readFile() that throws IOException. Call it from main() using try-catch.
+import java.io.*;
+
+public class Main {
+     public static void main(String[] args) {
+         try{
+             readFile();
+         }catch(Exception e){
+             System.out.println("here is an Exception " + e.getMessage());
+         }
+
+     }
+     public static void readFile() throws IOException {
+         BufferedReader file = new BufferedReader(new FileReader("arra.txt"));
+
+     }
+ }
+
+
+
+
+
+
+🧠 Bonus / Challenging Tasks
+
+
+🧩 Task 11: Finally Block Demo
+Write a program with a try-catch-finally block and show that the finally block always executes.
+import java.io.*;
+import java.util.Scanner;
+
+public class Main {
+     public static void main(String[] args) {
+         try{
+             Scanner sc = new Scanner(System.in);
+             System.out.println("pls enter a num");
+             int num1 =sc.nextInt();
+             int result=10/num1;
+             System.out.println("the result = "+result);
+
+         }catch(ArithmeticException e){
+             System.out.println("there is an exception"+e.getMessage());
+         }finally {
+             System.out.println("the finall block  ");
+         }
+
+     }
+ }
+
+
+
+
+
+
+🧩 Task 12: Nested Try-Catch
+Use nested try-catch blocks where inner block causes ArithmeticException and outer catches it.
+
+public class Main {
+     public static void main(String[] args) {
+         try{
+             System.out.println("Fist try block");
+             try{
+                 int result= 10/0;
+             }catch(ArrayIndexOutOfBoundsException ex ){
+                 System.out.println("caught an exception in the inner try block");
+             }
+         }catch (ArithmeticException e){
+             System.out.println("the exception is " + e.getMessage() + " and it's caught in the outer try block");
+         }
+
+
+     }
+ }

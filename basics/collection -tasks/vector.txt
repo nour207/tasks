@@ -1,0 +1,46 @@
+Vector is a resizable array in Java, found in the java.util package. It is part of the Collection Framework and works like an ArrayList, but it is synchronized, meaning it is safe to use in multi-threaded programs. However, this makes it a bit slower than ArrayList.
+
+Key Features of Vector
+It expands as elements are added.
+The Vector class is synchronized in nature means it is thread-safe by default.
+Like an ArrayList, it maintains insertion order.
+It allows duplicates and nulls.
+It implements List, RandomAccess, Cloneable and Serializable.
+
+Constructors of Vector
+1. Vector(): Creates a default vector of the initial capacity is 10.
+
+Vector<E> v = new Vector<E>();
+
+2. Vector(int size): Creates a vector whose initial capacity is specified by size.
+
+Vector<E> v = new Vector<E>(int size);
+
+3. Vector(int size, int incr): Creates a vector whose initial capacity is specified by size and increment is specified by incr. It specifies the number of elements to allocate each time a vector is resized upward.
+
+Vector<E> v = new Vector<E>(int size, int incr);
+
+4. Vector(Collection c): Creates a vector that contains the elements of collection c.
+
+Vector<E> v = new Vector<E>(Collection c);
+
+Different Operations of Vector Class
+1. Adding Elements
+To add the elements to the Vector, we use the add() method. This method is overloaded to perform multiple operations based on different parameters. They are listed below as follows:
+
+add(Object): This method is used to add an element at the end of the Vector.
+add(int index, Object): This method is used to add an element at a specific index in the Vector.
+
+2. Updating Elements
+To update an element in a Vector, use the set() method. It takes the index and the new element to replace the existing one at that position.
+
+
+3. Removing Elements
+To remove an element from a Vector, we can use the remove() method. This method is overloaded to perform multiple operations based on different parameters. They are:
+
+remove(Object): This method is used to remove an object from the Vector. If there are multiple such objects, then the first occurrence of the object is removed.
+remove(int index): Vector is indexed, so this method takes an integer value which simply removes the element present at that specific index in the Vector. After removing the element, all the elements are moved to the left to fill the space and the indices of the objects are updated.
+
+4. Iterating the Vector
+There are multiple ways to iterate through the Vector. The most famous ways are by using the basic for loop in combination with a get() method to get the element at a specific index and the advanced for a loop.
+

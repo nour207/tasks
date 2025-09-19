@@ -1,0 +1,175 @@
+🧠 Task 1: Understand List vs Vector
+📄 Task: Compare and write the differences between List and Vector in Java.
+
+🧩 Focus:
+
+Thread safety
+
+Performance
+
+Synchronization
+
+->In Java, List is an interface representing an ordered collection of elements, 
+while Vector is a concrete class implementing the List interface, 
+primarily distinguished by its thread-safety and performance characteristics.
+
+-->>Thread Safety and Synchronization:
+
+*Vector: Vector is a legacy class where all its public methods are synchronized. 
+This means that only one thread can access and modify a Vector instance at a time, 
+ensuring thread-safety in a multi-threaded environment. This synchronization is inherent to the Vector class.
+
+*List (e.g., ArrayList, LinkedList): The List interface itself does not guarantee thread-safety.
+ Implementations like ArrayList and LinkedList are not synchronized by default.
+ To achieve thread-safety with these List implementations, external synchronization mechanisms are required, 
+such as using Collections.synchronizedList() to wrap the List or implementing custom locking mechanisms (e.g., synchronized blocks) around operations on the list.
+
+Performance:
+#Vector: Due to the overhead of synchronization on every method call, Vector generally exhibits lower performance compared to unsynchronized List implementations like ArrayList,
+ especially in single-threaded environments or when thread-safety is not a primary concern. The constant locking and unlocking operations add a performance penalty.
+#List (e.g., ArrayList, LinkedList): ArrayList and LinkedList generally offer better performance in single-threaded scenarios because they do not incur the overhead of synchronization.
+ ArrayList is typically faster for random access, while LinkedList excels in insertion and deletion operations in the middle of the list.
+ When external synchronization is applied to a List implementation, its performance will be affected by the synchronization mechanism used.
+
+
+🧠 Task 2: Understand HashSet vs LinkedHashSet
+📄 Task: Compare and write the differences between HashSet and LinkedHashSet.
+
+🧩 Focus:
+
+Order of elements. 
+
+HashSet
+
+Does not maintain any order of elements.
+
+The order can change as elements are added or removed.
+
+Example: Adding elements [10, 20, 30] may print in unpredictable order like [30, 10, 20].
+
+LinkedHashSet
+
+Maintains elements in the insertion order.
+
+If you insert [10, 20, 30], iteration will always give [10, 20, 30].
+
+
+
+Performance:
+
+HashSet
+
+Usually faster than LinkedHashSet because it doesn’t maintain order.
+
+Time complexity: O(1) for add, remove, and contains (on average).
+
+LinkedHashSet
+
+Slightly slower than HashSet because it maintains a linked list to remember insertion order.
+
+Time complexity: still O(1) for add, remove, and contains, but with a bit of extra overhead.
+
+Use cases:
+HashSet
+
+When you only care about unique elements and don’t care about order.
+
+Best for fast lookups and set operations (union, intersection, etc.).
+
+LinkedHashSet
+
+When you want unique elements but also need to preserve insertion order.
+
+Useful for caching (e.g., least-recently-used implementations) or when order matters in iteration.
+
+
+
+
+
+🧠 Task 3: Understand String vs StringBuilder vs StringBuffer
+📄 Task: Compare and write the differences between String, StringBuilder, and StringBuffer.
+
+🧩 Focus:
+
+Mutability:
+String
+
+Immutable → once created, it cannot be changed.
+
+Any operation (e.g., concatenation) creates a new String object in memory.
+
+StringBuilder
+
+Mutable → content can be changed without creating a new object.
+
+Supports methods like append(), insert(), delete(), reverse().
+
+StringBuffer
+
+Also mutable (like StringBuilder).
+
+Provides the same methods as StringBuilder.
+
+
+
+Thread safety:
+String
+
+Immutable → naturally thread-safe (cannot be modified after creation).
+
+StringBuilder
+
+Not synchronized → not thread-safe.
+
+Unsafe if multiple threads modify it at the same time.
+
+StringBuffer
+
+Synchronized → thread-safe.
+
+Safe for use by multiple threads, but slower due to synchronization overhead.
+
+
+
+
+Performance:
+String
+
+Slower for repeated modifications (creates new objects each time).
+
+Efficient if the value doesn’t change often.
+
+StringBuilder
+
+Fastest for string modifications (no synchronization).
+
+Preferred in single-threaded scenarios.
+
+StringBuffer
+
+Slower than StringBuilder because synchronization adds overhead.
+
+Useful only when thread safety is required.
+
+
+
+When to use each:
+String
+
+When the value is constant or rarely changes.
+
+Example: storing fixed names, keys, or messages.
+
+StringBuilder
+
+When you need to modify strings frequently in a single-threaded context.
+
+Example: building dynamic SQL queries, text processing, loops with concatenation.
+
+StringBuffer
+
+When you need to modify strings in a multi-threaded context.
+
+Example: server-side logging, multi-threaded caching, or when multiple threads update the same string.
+
+

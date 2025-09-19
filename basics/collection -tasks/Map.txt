@@ -1,0 +1,65 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapExample {
+    public static void main(String[] args) {
+        // Create a HashMap
+        Map<Integer, String> map = new HashMap<>();
+
+        // Add key-value pairs
+        map.put(1, "Apple");
+        map.put(2, "Banana");
+        map.put(3, "Mango");
+
+        // Print the map
+        System.out.println("Map: " + map);
+
+        // Get a value
+        System.out.println("Key 2 => " + map.get(2));
+
+        // Remove a key
+        map.remove(3);
+        System.out.println("After removing key 3: " + map);
+
+        // Check if a key exists
+        System.out.println("Contains key 1? " + map.containsKey(1));
+
+        // Iterate through keys and values
+        System.out.println("Iterating through map:");
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " => " + entry.getValue());
+        }
+    }
+}
+
+
+///linkedHashMap
+LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+map.put(1, "Apple");
+map.put(2, "Banana");
+map.put(3, "Mango");
+
+System.out.println(map.get(2));       // Banana
+System.out.println(map.containsKey(1)); // true
+System.out.println(map.containsValue("Mango")); // true
+map.remove(3); // removes key 3
+
+
+
+
+////TreeMap
+
+
+
+TreeMap<Integer, String> treeMap = new TreeMap<>();
+treeMap.put(3, "Mango");
+treeMap.put(1, "Apple");
+treeMap.put(2, "Banana");
+
+System.out.println(treeMap.firstEntry());   // 1=Apple
+System.out.println(treeMap.lastEntry());    // 3=Mango
+System.out.println(treeMap.higherKey(1));   // 2
+System.out.println(treeMap.lowerKey(3));    // 2
+
+// Reverse order
+System.out.println(treeMap.descendingMap()); // {3=Mango, 2=Banana, 1=Apple}

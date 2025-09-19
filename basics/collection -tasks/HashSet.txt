@@ -1,0 +1,23 @@
+A HashSet is a collection of elements where every element is unique.
+
+It is part of the java.util package and implements the Set interface.
+
+To add elements to a HashSet, use the add() method:
+
+To check whether an element exists in a HashSet, use the contains() method:
+
+To remove an element, use the remove() method:
+
+Use size() to count how many unique elements are in the set:
+
+Loop through the elements of an HashSet with a for-each loop:
+
+
+
+Java LinkedHashSet
+A LinkedHashSet is a collection that stores unique elements and remembers the order they were added.
+
+It is part of the java.util package and implements the Set interface.
+
+
+Use HashSet when you only care about uniqueness and speed. Use LinkedHashSet when order matters.

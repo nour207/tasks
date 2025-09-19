@@ -1,0 +1,62 @@
+//array
+        /*int[] arr =new int[5];
+        for (int i=0;i<5;i++)
+        {
+            arr[i]=i;
+        }
+        //updating
+        arr[2]=50;
+        System.out.println(Arrays.toString(arr));
+        //search
+        int index = Arrays.binarySearch(arr, 4);
+        System.out.println(index);
+
+        //sorting
+        Arrays.sort(arr);
+        System.out.println("the array after sorting is "+Arrays.toString(arr));
+        //access
+        System.out.println(arr[3]);*/
+
+
+        //ArrayList
+        /*ArrayList <String> myList = new ArrayList<>();
+        myList.add(0,"a");
+        myList.add(1,"b");
+        myList.add(2,"c");
+        myList.add(3,"d");
+        myList.add(4,"e");
+        myList.removeFirst();
+        System.out.println(myList);
+        myList.remove(2);
+        System.out.println(myList);
+        myList.addFirst("nour");
+        System.out.println(myList);
+        myList.set(3,"islam");
+        System.out.println(myList);
+
+        for (int i = 0; i < myList.size(); i++) {
+            System.out.println(myList.get(i));
+        }
+
+
+
+///linkedlist
+        LinkedList<String> names = new LinkedList<String>();
+        names.add("Alaa");
+        names.add("Karim");
+        names.add("Nour");
+        names.add("Rehab");
+        System.out.println(names);
+        System.out.println("****************");
+        names.addFirst("moaz ");
+        System.out.println(names);
+        System.out.println("****************");
+        names.addLast("mogy");
+        System.out.println(names);
+        System.out.println("****************");
+        names.removeFirst();
+        System.out.println(names);
+        System.out.println("****************");
+        System.out.println(names.getFirst());
+        System.out.println("****************");
+        System.out.println(names.getLast());*/

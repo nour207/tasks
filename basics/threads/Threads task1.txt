@@ -1,0 +1,237 @@
+🔹 Basic Thread Creation
+Create and run a simple thread
+
+Task: Create a class that extends Thread, override run() method, and print "Hello from thread". Start the thread.
+
+public class Student extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Hello from method");
+
+    }
+}
+
+
+public class Main {
+     public static void main(String[] args) {
+         Student student = new Student();
+         Thread thread1 = new Thread(() -> student.run());
+         thread1.start();
+
+     }
+ }
+
+e
+
+
+
+Implement Runnable interface
+
+Task: Create a class that implements Runnable and prints the current thread name and a message.
+
+
+public class Main {
+     public static void main(String[] args) {
+         Student student = new Student(" never mind");
+
+         Thread thread1 = new Thread(student);
+         thread1.start();
+
+     }
+ }
+
+
+
+
+public class Student implements Runnable {
+
+    private String message;
+    public Student(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Hello from method " + Thread.currentThread().getName() + message +" ");
+
+    }
+}
+
+
+
+
+
+---------------------------------------------
+ Thread Sleep and Join
+Use Thread.sleep()
+
+Task: Print numbers 1 to 5 with a 1-second delay between each number using sleep().
+
+public class Main {
+     public static void main(String[] args) {
+
+
+
+         for(int i=1; i<=5; i++ ){
+             System.out.println("the counter is " + i);
+             try {
+                 Thread.sleep(1000);
+             } catch (InterruptedException e) {
+                 throw new RuntimeException(e);
+             }
+         }
+
+
+     }
+ }
+
+
+
+
+
+Use Thread.join()
+
+Task: Create two threads. Make the main thread wait for them to finish using join().
+
+public class Student implements Runnable {
+
+    private String message;
+    public Student(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public void run() {
+        for(int i = 1; i <= 4; i++) {
+            System.out.println(message + i );
+        }
+
+    }
+}
+
+
+
+public class Main {
+     public static void main(String[] args) {
+
+         Thread t1=new Thread((new Student("Nour is here ")) );
+         Thread t2=new Thread( (new Student("Ali is here ")) );
+
+         t1.start();
+         t2.start();
+
+
+         try {
+             t1.join();
+             t2.join();
+         } catch (InterruptedException e) {
+             throw new RuntimeException(e);
+         }
+
+         System.out.println("the main class is executing after the 2 threads ");
+     }
+ }
+
+
+
+-----------------------------------------------------------
+this task contain wait and notify pls search about this and apply 
+
+📄 Task Description:
+Create a BankAccount class shared between two types of threads:
+
+Depositor Thread: adds money to the account.
+
+Withdrawer Thread: takes money from the account.
+
+You will:
+
+Start one Depositor thread and one Withdrawer thread.
+
+The Depositor will deposit money every few seconds.
+
+The Withdrawer will try to withdraw money every few seconds.
+
+Use synchronized and wait/notify to make it thread-safe.
+
+🧩 Requirements:
+BankAccount class:
+
+Fields: balance
+
+Methods:
+
+deposit(int amount)
+
+withdraw(int amount)
+
+Use wait() if balance is low and notify() after deposit.
+
+Simulate deposits and withdrawals every 1–2 seconds.
+
+------------------------------------------------------------------
+
+
+public class BankAccount extends Thread {
+    private int balance;
+
+    public BankAccount(int initialBalance) {
+        this.balance = initialBalance;
+    }
+
+    // Deposit method
+    public synchronized void deposit(int amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount + " | Balance: " + balance);
+        notify(); // notify waiting withdrawer
+    }
+
+    // Withdraw method
+    public synchronized void withdraw(int amount) {
+        while (balance < amount) {
+            System.out.println("Not enough balance to withdraw " + amount + ". Waiting...");
+            try {
+                wait(); // wait until someone deposits
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        balance -= amount;
+        System.out.println("Withdrew: " + amount + " | Balance: " + balance);
+    }
+}
+
+
+
+
+public class Main {
+     public static void main(String[] args) {
+         BankAccount account = new BankAccount(500);
+
+         Thread depositor = new Thread(() -> {
+             for(int i = 0; i < 5; i++) {
+                 int amount = (int) (Math.random() * 500) + 100;
+                 account.deposit(amount);
+             }
+             try {
+                 Thread.sleep(1000);
+             } catch (InterruptedException e) {
+                 throw new RuntimeException(e);
+             }
+         });
+         Thread withdrawer = new Thread(() -> {
+             for(int i = 0; i < 5; i++) {
+                 int amount = (int) (Math.random() * 500) + 100;
+                 account.withdraw(amount);
+             }
+             try {
+                 Thread.sleep(1000);
+             } catch (InterruptedException e) {
+                 throw new RuntimeException(e);
+             }
+         });
+
+         depositor.start();
+         withdrawer.start();
+     }
+ }
