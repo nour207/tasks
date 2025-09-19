@@ -1,0 +1,66 @@
+create table Doctor contain
+
+id, name , salary , address
+----------------------------------
+please insert 10 row with Data as you like 
+-----------------------------------------
+update record number 3 with salary 20000
+----------------------------------
+delete record number 9
+-----------------------------------------
+ please Concatenation all name with salary  of all rows
+----------------------------------
+display all record with salary * 2
+-----------------------------------------
+ select all data with salary  1000 , 2000 , 3000 
+----------------------------------
+rename table Doctor to PRD_DOCTOR
+-----------------------------------------
+  
+
+----------------------------------------
+THE ANSWER :
+
+
+DROP TABLE doctor;
+CREATE TABLE doctor ( id NUMBER(4) , name VARCHAR(50) , salary NUMBER(10) , address VARCHAR(50) ) ; 
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (151 , 'nour' , 15000 , 'cairo' );
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (152 , 'lolo' , 15000 , 'cairo' );
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (153 , 'harsha' , 15000 , 'cairo' );
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (154 , 'hesho' , 15000 , 'cairo' );
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (155 , 'ibobo' , 15000 , 'cairo' );
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (156 , 'bobo' , 18000 , 'cairo' );
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (157 , 'nono' , 11000 , 'cairo' );
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (158 , 'meme' , 13000 , 'cairo' );
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (159 , 'sosos' , 16000 , 'cairo' );
+
+INSERT INTO doctor (id , name , salary , address) 
+VALUES (160 , 'dodo' , 15000 , 'cairo' );
+
+UPDATE doctor SET salary = 20000 WHERE id = 160;
+
+DELETE DOCTOR WHERE name = 'sosos';
+
+SELECT id , name , salary*2 AS "NEW-salary" , address FROM DOCTOR;
+
+SELECT * FROM doctor WHERE salary >=13000;
+
+RENAME doctor TO PRD_DOCTOR;

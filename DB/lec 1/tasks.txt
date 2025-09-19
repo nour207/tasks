@@ -1,0 +1,35 @@
+create table Manger contain
+
+id, name , age , birth_date , address
+----------------------------------
+alter table manger drop address column
+alter table manger add column (city_address, street) 
+-------------------------------------
+modify column name to full_name
+-------------------------------------
+make this table just for read
+-------------------------------
+create table same as  Manger with name Owner
+just has colum id, name, birth_date 
+----------------------------------------
+rename manger table name to Master
+-----------------------------------------
+drop all tables     
+-------------------------------------------
+
+THE ANSWER :
+
+
+CREATE TABLE Manger ( id Number(5) , name VARCHAR(50) , age NUMBER(2) , birth_date DATE , addess VARCHAR(50)
+);
+
+ALTER TABLE MANGER RENAME COLUMN  name TO Full_name ;
+
+ALTER TABLE Manger READ ONLY   ;
+
+CREATE TABLE Owner AS  SELECT * FROM MANGER ;
+
+ALTER TABLE MANGER RENAME TO Master; 
+
+DROP TABLE Owner;
+DROP TABLE Master;
