@@ -1,0 +1,28 @@
+-- Q1. Create a table called EMP_TEST with a column NAME having leading and trailing spaces.
+-- Q2. Display all names using TRIM to remove both leading and trailing spaces.
+-- Q3. Use LTRIM to remove only leading spaces.
+-- Q4. Use RTRIM to remove only trailing spaces.
+-- Q5. Use TRIM to remove a specific character (e.g., ‘*’ or ‘#’) from both sides of a string.
+
+
+-----------------------------------------------------------------------
+
+THE ANSWER: 
+CREATE TABLE emp_test (
+    name VARCHAR2(50)
+);
+
+INSERT INTO emp_test (name) VALUES ('   John   ');
+INSERT INTO emp_test (name) VALUES ('   Sara');
+INSERT INTO emp_test (name) VALUES ('Ali**');
+INSERT INTO emp_test (name) VALUES ('***Mona');
+
+SELECT TRIM(name) FROM emp_test;
+
+SELECT RTRIM(name) FROM emp_test;
+SELECT LTRIM(name) FROM emp_test;
+
+SELECT TRIM(BOTH '*' FROM name ) FROM EMP_TEST;
+
+
+

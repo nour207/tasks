@@ -1,0 +1,9 @@
+CREATE TABLE status_log (
+    status_code CHAR(1)
+);
+
+INSERT INTO status_log (status_code) VALUES ('N');
+INSERT INTO status_log (status_code) VALUES ('I');
+INSERT INTO status_log (status_code) VALUES ('C');
+
+SELECT status_code , DECODE(status_code, 'N' , 'New' , 'I' , ' In progress' , 'C' , 'Completed')AS status_decode FROM status_log;
